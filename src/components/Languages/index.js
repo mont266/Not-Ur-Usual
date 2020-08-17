@@ -41,24 +41,6 @@ const Languages = () => {
 
   return (
     <S.LanguageWrapper>
-      <S.LanguageItem>
-        <S.LanguageLink 
-          to="/" 
-          onClick={(e) => handleClickLanguage(e, "en")}
-          className={locale === 'en' ? 'is-active' : ''}
-        >
-          EN
-        </S.LanguageLink>
-      </S.LanguageItem>
-      <S.LanguageItem>
-        <S.LanguageLink 
-          to="/" 
-          onClick={(e) => handleClickLanguage(e, "pt")}
-          className={locale === 'pt' ? 'is-active' : ''}
-        >
-          PT
-        </S.LanguageLink>
-      </S.LanguageItem>
     </S.LanguageWrapper>
   );
 };
