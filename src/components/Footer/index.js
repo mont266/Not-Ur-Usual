@@ -24,24 +24,11 @@ const Footer = () => {
           >
             {seeMorePWA}
           </a>
-          .
         </p>
         <p>
           {maintainedBy}{' '}
-          <a
-            href="https://twitter.com/_diogorodrigues"
-            target="_blank"
-          >
-            @_diogorodrigues
-          </a>
-          . {contributeMessage}{' '}
-          <a
-            href="https://github.com/diogorodrigues/iceberg-gatsby-multilang"
-            target="_blank"
-          >
-            Github
-          </a>
-          .
+          @{' '}
+          {contributeMessage}{' '}
         </p>
       </S.FooterContainer>
     </S.FooterWrapper>

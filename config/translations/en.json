@@ -1,8 +1,8 @@
 { 
   "home": "Home",
 
-  "hello": "Gatsby multi-language starter",
-  "subline": "Internationalization / i18n without third party plugins or packages for Posts and Pages. Different URLs dependending on the language. Focused on SEO, PWA, Image Optimization, Styled Components and more. This starter is also integrate with Netlify CMS to manage all pages, posts and images.",
+  "hello": "Header",
+  "subline": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   "latestPosts": "Latest posts",
   "category": "Category", 
   "allPosts": "All Posts",
@@ -12,10 +12,10 @@
   "prev": "Prev",
   "of": "of",
 
-  "button": "Button",
+  "button": "Contact Us",
 
-  "aboutProject": "Iceberg Gatsby is a PWA, save it for offline reading.",
-  "seeMorePWA": "See more PWA here",
-  "maintainedBy": "Maintained by",
-  "contributeMessage": "You can always contribute with the project on"
+  "aboutProject": "",
+  "seeMorePWA": "",
+  "maintainedBy": "",
+  "contributeMessage": "Copyright 2020. Not Ur Usual | Developed by Talisman Webs"
 }
