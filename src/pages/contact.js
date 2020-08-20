@@ -1,5 +1,43 @@
 import React from 'react'
+
 class ContactForm extends React.Component {
+    constructor(props) {
+    super(props)
+    this.ContactForm = React.createRef()
+    this.state = {
+      name: "",
+      email: "",
+      message: "",
+    }
+  }
+
+  encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    const form = this.ContactForm.current
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: this.encode({
+        "form-name": form.getAttribute("contact"),
+        ...this.state,
+      }),
+    })
+      .then(() => navigate("/"))
+      .catch(error => alert(error))
+
+    this.setState({
+      name: "",
+      email: "",
+      message: "",
+    })
+  }
+
   render() {
     const formStyle = {
       alignSelf: 'center',
@@ -16,10 +54,10 @@ class ContactForm extends React.Component {
         height: 40
     }
     return (
-      <form style={formStyle} className="form" name="contact" method="POST" data-netlify="true">
+      <form action={this.handleSubmit} style={formStyle} className="form" name="contact" netlify netlify-honeypot="bot-field" data-netlify="true">
         <div>
           <label>Your Name:</label><br/>
-          <input style={inputStyle} type="text" name="fullname"/>
+          <input style={inputStyle} type="text" name="name"/>
         </div>
         <div>
           <label>Your Email:</label><br/>
