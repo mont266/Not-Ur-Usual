@@ -29,10 +29,26 @@ export default function Contact() {
       .catch((error) => alert(error))
   }
 
+    const formStyle = {
+      alignSelf: 'center',
+      width: "100%",
+    }
+    const inputStyle = {
+        width: "100%"
+    }
+    const buttonStyle = {
+        alignSelf: 'center',
+        backgroundColor: '#0066f9',
+        color: '#fff',
+        width: 350,
+        height: 40
+    }
+
   return (
     <div>
       <h1>Contact</h1>
       <form
+        style={formStyle}
         name="contact"
         method="post"
         action="/thanks/"
@@ -51,25 +67,25 @@ export default function Contact() {
           <label>
             Your name:
             <br />
-            <input type="text" name="name" onChange={handleChange} />
+            <input style={inputStyle} type="text" name="name" onChange={handleChange} />
           </label>
         </p>
         <p>
           <label>
             Your email:
             <br />
-            <input type="email" name="email" onChange={handleChange} />
+            <input style={inputStyle} type="email" name="email" onChange={handleChange} />
           </label>
         </p>
         <p>
           <label>
             Message:
             <br />
-            <textarea name="message" onChange={handleChange} />
+            <textarea style={inputStyle} name="message" onChange={handleChange} />
           </label>
         </p>
         <p>
-          <button type="submit">Send</button>
+          <button style={buttonStyle} type="submit">Send</button>
         </p>
       </form>
     </div>
