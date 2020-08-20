@@ -29,6 +29,10 @@ const Footer = () => {
           {maintainedBy}{' '}
           @{' '}
           {contributeMessage}{' '}
+          {'Developed by '}
+          <a href="http://www.talismanwebs.com" target="_blank">
+            Talisman Webs
+          </a>
         </p>
       </S.FooterContainer>
     </S.FooterWrapper>
