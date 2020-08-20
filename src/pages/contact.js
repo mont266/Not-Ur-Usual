@@ -1,79 +1,77 @@
 import React from 'react'
+import { navigate } from 'gatsby-link'
 
-class ContactForm extends React.Component {
-    constructor(props) {
-    super(props)
-    this.ContactForm = React.createRef()
-    this.state = {
-      name: "",
-      email: "",
-      message: "",
-    }
-  }
-
-  encode = data => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&")
-  }
-
-  handleSubmit = event => {
-    event.preventDefault()
-    const form = this.ContactForm.current
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: this.encode({
-        "form-name": form.getAttribute("contact"),
-        ...this.state,
-      }),
-    })
-      .then(() => navigate("/"))
-      .catch(error => alert(error))
-
-    this.setState({
-      name: "",
-      email: "",
-      message: "",
-    })
-  }
-
-  render() {
-    const formStyle = {
-      alignSelf: 'center',
-      width: "100%",
-    }
-    const inputStyle = {
-        width: "100%"
-    }
-    const buttonStyle = {
-        alignSelf: 'center',
-        backgroundColor: '#0066f9',
-        color: '#fff',
-        width: 350,
-        height: 40
-    }
-    return (
-      <form action={this.handleSubmit} style={formStyle} className="form" name="contact" netlify netlify-honeypot="bot-field" data-netlify="true">
-        <div>
-          <label>Your Name:</label><br/>
-          <input style={inputStyle} type="text" name="name"/>
-        </div>
-        <div>
-          <label>Your Email:</label><br/>
-          <input style={inputStyle} type="email" name="email"/>
-        </div>
-        <div>
-          <label>Message</label><br/>
-          <textarea style={inputStyle} name="message" rows="5"></textarea>
-        </div>
-        <div>
-          <button style={buttonStyle} type="submit"  className="button special">Send</button>
-        </div>
-      </form>
-    );
-  }
+function encode(data) {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
 }
 
-export default ContactForm
+export default function Contact() {
+  const [state, setState] = React.useState({})
 
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const form = e.target
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...state,
+      }),
+    })
+      .then(() => navigate(form.getAttribute('action')))
+      .catch((error) => alert(error))
+  }
+
+  return (
+    <div>
+      <h1>Contact</h1>
+      <form
+        name="contact"
+        method="post"
+        action="/"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        onSubmit={handleSubmit}
+      >
+        {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+        <input type="hidden" name="form-name" value="contact" />
+        <p hidden>
+          <label>
+            Don’t fill this out: <input name="bot-field" onChange={handleChange} />
+          </label>
+        </p>
+        <p>
+          <label>
+            Your name:
+            <br />
+            <input type="text" name="name" onChange={handleChange} />
+          </label>
+        </p>
+        <p>
+          <label>
+            Your email:
+            <br />
+            <input type="email" name="email" onChange={handleChange} />
+          </label>
+        </p>
+        <p>
+          <label>
+            Message:
+            <br />
+            <textarea name="message" onChange={handleChange} />
+          </label>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
+      </form>
+    </div>
+  )
+}
