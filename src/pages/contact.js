@@ -16,13 +16,13 @@ class ContactForm extends React.Component {
         height: 40
     }
     return (
-      <form style={formStyle} className="form" method="post" action="https://getform.io/{your-unique-getform-endpoint}">
+      <form style={formStyle} className="form" name="contact" method="POST" data-netlify="true">
         <div>
-          <label>Full name</label><br/>
+          <label>Your Name:</label><br/>
           <input style={inputStyle} type="text" name="fullname"/>
         </div>
         <div>
-          <label>Email</label><br/>
+          <label>Your Email:</label><br/>
           <input style={inputStyle} type="email" name="email"/>
         </div>
         <div>
@@ -36,5 +36,6 @@ class ContactForm extends React.Component {
     );
   }
 }
+
 export default ContactForm
 
