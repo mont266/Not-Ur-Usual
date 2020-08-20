@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "gatsby"
 import useMenu from '../useMenu';
 import useTranslations from '../useTranslations';
 
@@ -22,8 +23,8 @@ const Navigation = ({ isActive, handleToggleMenu }) => {
           </S.NavigationLink>
         ))}
 
-        <S.NavigationButton to="/contact" aria-label="Login">
-          {button}
+        <S.NavigationButton aria-label="Contact">
+          <Link to="/contact/">{button}</Link>
         </S.NavigationButton>
       </S.Navigation>
     </>
